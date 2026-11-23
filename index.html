@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f3ed">
-  <meta name="description" content="Portofolio Razan Naufal Rafif, Developer & Game Designer.">
+  <meta name="description" content="Portofolio Razan Naufal Rafif, pengembang game dan Lead Programmer & Game Designer.">
   <title>Razan Naufal Rafif — Portofolio</title>
   <style>
     :root {
@@ -31,7 +31,7 @@
       -webkit-font-smoothing: antialiased;
     }
     a { color: inherit; }
-    a:focus-visible { outline: 3px solid #8eaa39; outline-offset: 4px; }
+    a:focus-visible, button:focus-visible { outline: 3px solid #8eaa39; outline-offset: 4px; }
     .wrap { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
 
     .site-header {
@@ -271,13 +271,22 @@
     .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
     .project-tags span { padding: 5px 9px; border: 1px solid rgba(255, 255, 255, .2); border-radius: 999px; color: rgba(255, 254, 250, .82); font-size: 10px; }
 
+    .doc-group + .doc-group { margin-top: 48px; }
+    .doc-group-title {
+      margin: 0 0 14px;
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--green);
+    }
     .achievement-list { border-top: 1px solid var(--line); }
     .achievement {
       display: grid;
       grid-template-columns: 110px 1fr auto;
       align-items: center;
       gap: 24px;
-      padding: 26px 0;
+      padding: 24px 0;
       border-bottom: 1px solid var(--line);
     }
     .achievement-year {
@@ -304,16 +313,93 @@
       padding: 9px 16px;
       border: 1px solid var(--green);
       border-radius: 999px;
+      background: transparent;
       color: var(--green);
+      font-family: inherit;
       font-size: 12px;
       font-weight: 650;
-      text-decoration: none;
       white-space: nowrap;
+      cursor: pointer;
       transition: background .2s ease, color .2s ease;
     }
     .cert-btn:hover {
       background: var(--green);
       color: var(--white);
+    }
+
+    /* Modal Preview */
+    .doc-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(28, 40, 36, 0.72);
+    }
+    .doc-modal.is-open { display: flex; }
+    .doc-dialog {
+      width: min(980px, 100%);
+      height: min(86vh, 800px);
+      display: flex;
+      flex-direction: column;
+      background: var(--paper);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .25);
+    }
+    .doc-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--line);
+      background: var(--white);
+    }
+    .doc-title {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 650;
+      color: var(--ink);
+    }
+    .doc-close {
+      border: 1px solid var(--ink);
+      background: transparent;
+      color: var(--ink);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 650;
+      cursor: pointer;
+    }
+    .doc-close:hover {
+      background: var(--ink);
+      color: var(--paper);
+    }
+    .doc-body {
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #eceae2;
+      overflow: auto;
+    }
+    .doc-frame {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #fff;
+    }
+    .doc-image {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
     }
 
     .contact-section {
@@ -379,7 +465,7 @@
   <main>
     <section class="hero">
       <div class="wrap">
-        <p class="eyebrow">Portofolio · Lead Programmer &amp; Game Designer</p>
+        <p class="eyebrow">Portofolio · Lead Programmer & Game Designer</p>
         <h1>Merancang game yang <em>bermakna.</em></h1>
         <div class="hero-bottom">
           <p class="hero-copy">
@@ -402,11 +488,11 @@
           </li>
           <li>
             <span class="fact-icon" aria-hidden="true">✳</span>
-            <div>S1 Teknik Informatika · ITERA · 2026 - Sekarang </div>
+            <div><strong>Berikutnya</strong>S1 Teknik Informatika · ITERA</div>
           </li>
           <li>
             <span class="fact-icon" aria-hidden="true">↗</span>
-            <div><strong>Fokus</strong>Game edukasi &amp; teknologi web</div>
+            <div><strong>Fokus</strong>Game edukasi & teknologi web</div>
           </li>
         </ul>
       </div>
@@ -428,16 +514,16 @@
               Saya <strong>Razan Naufal Rafif</strong>, pengembang game yang antusias menggabungkan logika pemrograman dengan nilai edukasi dan budaya. Perjalanan saya dimulai dari pemrograman berbasis blok, lalu berkembang ke teknologi web dan JavaScript.
             </p>
             <p>
-              Saat ini saya menempuh pendidikan di program studi S1 Teknik Informatika di <strong>Institut Teknologi Sumatera (ITERA)</strong>. Saya tertarik membuat game yang seru dimainkan sekaligus punya tujuan yang bermakna.
+              Saat ini saya menempuh pendidikan di <strong>SMA S YP UNILA</strong> dan akan melanjutkan studi S1 Teknik Informatika di <strong>Institut Teknologi Sumatera (ITERA)</strong>. Saya tertarik membuat game yang seru dimainkan sekaligus punya tujuan yang bermakna.
             </p>
           </div>
 
           <div class="profile-card">
             <div class="profile-photo-wrap">
-              <img src="Sertif/Razan%20Naufal%20Rafif.png" alt="Foto Razan Naufal Rafif">
+              <img src="Sertif/Razan%20Naufal%20Rafif.png" alt="Foto profil Razan Naufal Rafif">
             </div>
             <div class="skill-panel">
-              <h3>Keahlian &amp; minat</h3>
+              <h3>Keahlian & minat</h3>
               <div class="skills">
                 <span class="skill">JavaScript</span>
                 <span class="skill">Game programming</span>
@@ -467,7 +553,7 @@
           <a href="https://rattle.itch.io" target="_blank" rel="noopener" class="project-card">
             <div>
               <div class="project-top">
-                <span class="project-type">Game edukasi · Game design &amp; programming ✳</span>
+                <span class="project-type">Game edukasi · Game design & programming ✳</span>
                 <span class="project-arrow" aria-hidden="true">↗</span>
               </div>
               <h3>Sergap Kartu</h3>
@@ -495,7 +581,7 @@
             </div>
             <div class="project-tags">
               <span>JavaScript</span>
-              <span>DOM &amp; event handling</span>
+              <span>DOM & event handling</span>
               <span>Favorit Clevio 2025</span>
             </div>
           </a>
@@ -507,47 +593,121 @@
       <div class="wrap">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">Pencapaian &amp; apresiasi</p>
+            <p class="eyebrow">Pencapaian & apresiasi</p>
             <h2>Prestasi</h2>
           </div>
-          <p class="section-note">Pengakuan tingkat nasional untuk karya game edukasi dan pengembangan game.</p>
+          <p class="section-note">Pratinjau piagam dan sertifikat ditampilkan langsung di modal.</p>
         </div>
 
-        <div class="achievement-list">
-          <div class="achievement">
-            <span class="achievement-year">2025</span>
-            <div class="achievement-info">
-              <h3>Juara Favorit Tingkat Nasional</h3>
-              <p>Kompetisi Pengembangan Game Clevio Innovator Camp, melalui game Klapy Clean.</p>
+        <div class="doc-group">
+          <h3 class="doc-group-title">Piagam</h3>
+          <div class="achievement-list">
+            <div class="achievement">
+              <span class="achievement-year">2025</span>
+              <div class="achievement-info">
+                <h3>E-Piagam Penulis Nasional GSMB</h3>
+                <p>Gerakan Sekolah Menulis Buku Nasional 2025.</p>
+              </div>
+              <button
+                type="button"
+                class="cert-btn"
+                data-doc="Sertif/14124.%20RAZAN%20NAUFAL%20-%20E-PIAGAM%20PENULIS%20NASIONAL%20GSMB%202025.pdf"
+                data-type="pdf"
+                data-title="E-Piagam Penulis Nasional GSMB 2025"
+              >
+                Lihat Piagam
+              </button>
             </div>
-            <a href="Sertif/DOC-20250815-WA0023..pdf" target="_blank" class="cert-btn">Lihat Sertifikat ↗</a>
-          </div>
 
-          <div class="achievement">
-            <span class="achievement-year">2024</span>
-            <div class="achievement-info">
-              <h3>Juara III Nasional Olimpiade TIK-Informatika (OTN) VI</h3>
-              <p>Diraih melalui game edukasi Sergap Kartu.</p>
+            <div class="achievement">
+              <span class="achievement-year">2025</span>
+              <div class="achievement-info">
+                <h3>E-Sertifikat Kompetensi Menulis GSMB</h3>
+                <p>Gerakan Sekolah Menulis Buku Nasional 2025.</p>
+              </div>
+              <button
+                type="button"
+                class="cert-btn"
+                data-doc="Sertif/14124.%20RAZAN%20NAUFAL%20-%20E-SERTIFIKAT%20KOMPETENSI%20MENULIS%20GSMB%202025.pdf"
+                data-type="pdf"
+                data-title="E-Sertifikat Kompetensi Menulis GSMB 2025"
+              >
+                Lihat Piagam
+              </button>
             </div>
-            <a href="Sertif/Sertifikat%20OTN%20VI%202024%20Razan%20Naufal%20Rafif.pdf" target="_blank" class="cert-btn">Lihat Sertifikat ↗</a>
           </div>
+        </div>
 
-          <div class="achievement">
-            <span class="achievement-year">FINALIS</span>
-            <div class="achievement-info">
-              <h3>Finalis OSAMAKOM</h3>
-              <p>Kompetisi bidang informatika dan komputer tingkat nasional.</p>
+        <div class="doc-group">
+          <h3 class="doc-group-title">Sertifikat</h3>
+          <div class="achievement-list">
+            <div class="achievement">
+              <span class="achievement-year">FINALIS</span>
+              <div class="achievement-info">
+                <h3>Finalis OSAMAKOM</h3>
+                <p>Kompetisi bidang logika dan matematika komputer.</p>
+              </div>
+              <button
+                type="button"
+                class="cert-btn"
+                data-doc="Sertif/Finalis%20OSAMAKOM%20Razan%20Naufal%20Rafif.pdf"
+                data-type="pdf"
+                data-title="Sertifikat Finalis OSAMAKOM — Razan Naufal Rafif"
+              >
+                Lihat Sertifikat
+              </button>
             </div>
-            <a href="Sertif/Finalis%20OSAMAKOM%20Razan%20Naufal%20Rafif.pdf" target="_blank" class="cert-btn">Lihat Sertifikat ↗</a>
-          </div>
 
-          <div class="achievement">
-            <span class="achievement-year">2025</span>
-            <div class="achievement-info">
-              <h3>Penulis Nasional &amp; Kompetensi Menulis GSMB</h3>
-              <p>Gerakan Sekolah Menulis Buku Nasional.</p>
+            <div class="achievement">
+              <span class="achievement-year">2024</span>
+              <div class="achievement-info">
+                <h3>Juara III Nasional Olimpiade TIK-Informatika (OTN) VI</h3>
+                <p>Diraih melalui game edukasi Sergap Kartu.</p>
+              </div>
+              <button
+                type="button"
+                class="cert-btn"
+                data-doc="Sertif/Sertifikat%20OTN%20VI%202024%20Razan%20Naufal%20Rafif.pdf"
+                data-type="pdf"
+                data-title="Sertifikat OTN VI 2024 — Razan Naufal Rafif"
+              >
+                Lihat Sertifikat
+              </button>
             </div>
-            <a href="Sertif/14124.%20RAZAN%20NAUFAL%20-%20E-PIAGAM%20PENULIS%20NASIONAL%20GSMB%202025.pdf" target="_blank" class="cert-btn">Lihat Piagam ↗</a>
+
+            <div class="achievement">
+              <span class="achievement-year">2025</span>
+              <div class="achievement-info">
+                <h3>Juara Favorit Tingkat Nasional</h3>
+                <p>Kompetisi Pengembangan Game Clevio Innovator Camp melalui game Klapy Clean.</p>
+              </div>
+              <button
+                type="button"
+                class="cert-btn"
+                data-doc="Sertif/DOC-20250815-WA0023..pdf"
+                data-type="pdf"
+                data-title="Sertifikat Clevio Innovator Camp — Razan Naufal Rafif"
+              >
+                Lihat Sertifikat
+              </button>
+            </div>
+
+            <div class="achievement">
+              <span class="achievement-year">DOKUMEN</span>
+              <div class="achievement-info">
+                <h3>Razan Naufal Rafif</h3>
+                <p>Dokumen gambar pendukung di folder Sertif.</p>
+              </div>
+              <button
+                type="button"
+                class="cert-btn"
+                data-doc="Sertif/Razan%20Naufal%20Rafif.png"
+                data-type="image"
+                data-title="Razan Naufal Rafif"
+              >
+                Lihat Sertifikat
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -578,6 +738,71 @@
       </div>
     </div>
   </footer>
+
+  <div id="docModal" class="doc-modal" role="dialog" aria-modal="true" aria-labelledby="docModalTitle">
+    <div class="doc-dialog">
+      <div class="doc-header">
+        <h3 id="docModalTitle" class="doc-title">Pratinjau Dokumen</h3>
+        <button type="button" id="docCloseBtn" class="doc-close">Tutup ✕</button>
+      </div>
+      <div class="doc-body">
+        <iframe id="docFrame" class="doc-frame" title="Pratinjau Dokumen PDF" hidden></iframe>
+        <img id="docImage" class="doc-image" alt="" hidden>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const modal = document.getElementById('docModal');
+      const frame = document.getElementById('docFrame');
+      const image = document.getElementById('docImage');
+      const titleEl = document.getElementById('docModalTitle');
+      const closeBtn = document.getElementById('docCloseBtn');
+
+      document.querySelectorAll('[data-doc]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const url = btn.getAttribute('data-doc');
+          const type = btn.getAttribute('data-type') || 'pdf';
+          const label = btn.getAttribute('data-title') || 'Pratinjau Dokumen';
+
+          titleEl.textContent = label;
+
+          if (type === 'image') {
+            frame.hidden = true;
+            frame.src = '';
+            image.hidden = false;
+            image.src = url;
+            image.alt = label;
+          } else {
+            image.hidden = true;
+            image.src = '';
+            frame.hidden = false;
+            frame.src = url;
+          }
+
+          modal.classList.add('is-open');
+          closeBtn.focus();
+        });
+      });
+
+      function closeModal() {
+        modal.classList.remove('is-open');
+        frame.src = '';
+        frame.hidden = true;
+        image.src = '';
+        image.hidden = true;
+      }
+
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+      });
+    })();
+  </script>
 
 </body>
 </html>
