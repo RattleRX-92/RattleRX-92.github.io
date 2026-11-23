@@ -129,7 +129,30 @@
       margin-top: 40px;
     }
     .hero-copy { max-width: 470px; margin: 0; color: var(--muted); font-size: 16px; }
-    .hero-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 18px;
+      flex-shrink: 0;
+    }
+    .hero-photo-wrap {
+      width: 170px;
+      aspect-ratio: 1 / 1;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--white);
+      box-shadow: 0 12px 30px rgba(28, 40, 36, .08);
+    }
+    .hero-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+    .hero-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; justify-content: flex-end; }
     .button {
       display: inline-flex;
       align-items: center;
@@ -207,28 +230,6 @@
     .about-copy { max-width: 540px; color: var(--muted); font-size: 16px; }
     .about-copy p { margin: 0 0 18px; }
     .about-copy strong { color: var(--ink); font-weight: 650; }
-
-    .profile-card {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .profile-photo-wrap {
-      width: 100%;
-      max-width: 240px;
-      aspect-ratio: 1 / 1;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      background: var(--white);
-    }
-    .profile-photo-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      display: block;
-    }
 
     .skill-panel {
       padding: 26px;
@@ -463,6 +464,8 @@
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hero-bottom, .section-heading, .contact-box { flex-direction: column; align-items: flex-start; }
+      .hero-right { align-items: flex-start; }
+      .hero-actions { justify-content: flex-start; }
       .fact-list, .about-grid, .project-grid { grid-template-columns: 1fr; }
       .achievement { grid-template-columns: 1fr; gap: 12px; }
     }
@@ -494,9 +497,14 @@
           <p class="hero-copy">
             Pengembang game yang menggabungkan logika pemrograman, nilai edukasi, dan budaya untuk menciptakan pengalaman digital yang interaktif.
           </p>
-          <div class="hero-actions">
-            <a href="#proyek" class="button">Lihat proyek ↘</a>
-            <a href="#prestasi" class="text-link">Lihat prestasi <span>↓</span></a>
+          <div class="hero-right">
+            <div class="hero-photo-wrap">
+              <img src="Sertif/foto%20profil.jpeg" alt="Foto profil Razan Naufal Rafif">
+            </div>
+            <div class="hero-actions">
+              <a href="#proyek" class="button">Lihat proyek ↘</a>
+              <a href="#prestasi" class="text-link">Lihat prestasi <span>↓</span></a>
+            </div>
           </div>
         </div>
       </div>
@@ -541,21 +549,16 @@
             </p>
           </div>
 
-          <div class="profile-card">
-            <div class="profile-photo-wrap">
-              <img src="Sertif/foto%20profil.jpeg" alt="Foto profil Razan Naufal Rafif">
-            </div>
-            <div class="skill-panel">
-              <h3>Keahlian & minat</h3>
-              <div class="skills">
-                <span class="skill">JavaScript</span>
-                <span class="skill">Game programming</span>
-                <span class="skill">Game design</span>
-                <span class="skill">DOM manipulation</span>
-                <span class="skill">Event handling</span>
-                <span class="skill">State management</span>
-                <span class="skill">Aksara Lampung</span>
-              </div>
+          <div class="skill-panel">
+            <h3>Keahlian & minat</h3>
+            <div class="skills">
+              <span class="skill">JavaScript</span>
+              <span class="skill">Game programming</span>
+              <span class="skill">Game design</span>
+              <span class="skill">DOM manipulation</span>
+              <span class="skill">Event handling</span>
+              <span class="skill">State management</span>
+              <span class="skill">Aksara Lampung</span>
             </div>
           </div>
         </div>
